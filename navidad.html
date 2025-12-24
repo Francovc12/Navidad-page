@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&display=swap" rel="stylesheet">
+    <title>Feliz Navidad</title>
+</head>
+
+<body>
+    <p>Te deseo una feliz Navidad &#127877 y un prospero año nuevo &#129346</p>
+    <p>que logres todas tus <b>metas</b> &#10024 </p>
+    <img src="arbol.svg" alt="Árbol de Navidad con regalos" width="300" height="300">
+    <p class="art"><a href="https://iconscout.com/illustrations/arbol" class="text-underline font-size-sm" target="_blank">árbol de navidad con regalos</a> by <a href="https://iconscout.com/es/contributors/kolo-design/:assets" class="text-underline font-size-sm" target="_blank">Kalash</a></p>
+    <span></span>
+</body>
+<style>
+    body {
+        background: radial-gradient(circle at center, rgb(1, 58, 1), rgb(2, 41, 21));
+        color: rgb(255, 247, 1);
+        text-align: center;
+        font-family: "Birthstone", cursive;
+        font-weight: 400;
+        font-style: normal;
+        margin-top: 50px;
+        p {
+            font-size: 60px;
+            font-weight: bold;
+        }
+        span{
+            display: block;
+            margin-top: 20px;
+            font-size: 50px;
+            font-weight: bold;
+        }
+    }
+    .art {
+        font-size: 14px;
+        margin-top: 10px;
+        color: white;
+    }
+
+</style>
+<script>
+    function JSClock() {
+        const time = new Date();
+        const hour = time.getHours();
+        const minute = time.getMinutes();
+        const second = time.getSeconds();
+        let temp = String(hour % 12);
+        if (temp === "0") {
+            temp = "12";
+        }
+        temp += (minute < 10 ? ":0" : ":") + minute;
+        temp += (second < 10 ? ":0" : ":") + second;
+        temp += hour >= 12 ? " P.M." : " A.M.";
+        return temp;
+    }
+    elementoSpan = document.querySelector("span");
+    window.setInterval(() => {
+        elementoSpan.innerHTML = JSClock();
+    }, 1000);
+    
+</script>
+
+<style>
+    /* Copos de nieve */
+    .snowflake {
+        position: fixed;
+        top: -10px;
+        z-index: 9999;
+        color: #ffffff;
+        user-select: none;
+        pointer-events: none;
+        text-shadow: 0 0 6px rgba(255,255,255,0.6);
+        animation: fall var(--dur, 10s) linear infinite, sway var(--sway, 3s) ease-in-out infinite alternate;
+        left: var(--left, 50%);
+        opacity: 0.9;
+        will-change: transform, margin-left;
+    }
+
+    @keyframes fall {
+        to { transform: translateY(110vh); }
+    }
+
+    @keyframes sway {
+        from { margin-left: -20px; }
+        to { margin-left: 20px; }
+    }
+
+</style>
+<script>
+    (function createSnow() {
+        const flakes = 60; // número de copos de nieve
+        for (let i = 0; i < flakes; i++) {
+            const flake = document.createElement('span');
+            flake.className = 'snowflake';
+            flake.textContent = '❄';
+            const left = Math.random() * 100; // porcentaje
+            const size = 8 + Math.random() * 28; // px
+            const duration = 6 + Math.random() * 12; // s
+            const sway = 2 + Math.random() * 4; // s
+            const opacity = 0.3 + Math.random() * 0.7;
+            flake.style.setProperty('--left', left + '%');
+            flake.style.setProperty('--dur', duration + 's');
+            flake.style.setProperty('--sway', sway + 's');
+            flake.style.fontSize = size + 'px';
+            flake.style.opacity = opacity;
+            document.body.appendChild(flake);
+        }
+    })();
+</script>
+
+</html>
